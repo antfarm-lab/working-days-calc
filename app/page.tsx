@@ -53,7 +53,16 @@ export default function Home() {
           </p>
         </div>
       </div>
+ <section className="mt-10 max-w-3xl mx-auto bg-white p-6 rounded-xl shadow">
+        <h2 className="text-xl font-bold mb-3">勤務日数の考え方</h2>
 
+        <p className="text-gray-700 leading-relaxed">
+          勤務日数は、対象期間の日数から休日日数を差し引いて計算できます。
+          月の勤務日数やシフト日数を確認したい場合に便利です。
+          実際の勤務日数は会社の休日、祝日、有給休暇、シフト条件などによって変わるため、
+          目安としてご利用ください。
+        </p>
+      </section>
       <section className="mt-10 max-w-3xl mx-auto bg-white p-6 rounded-xl shadow">
        <h2 className="text-xl font-bold mb-3">
   他の便利ツール
@@ -108,16 +117,7 @@ export default function Home() {
 </ul>
       </section>
 
-      <section className="mt-10 max-w-3xl mx-auto bg-white p-6 rounded-xl shadow">
-        <h2 className="text-xl font-bold mb-3">勤務日数の考え方</h2>
-
-        <p className="text-gray-700 leading-relaxed">
-          勤務日数は、対象期間の日数から休日日数を差し引いて計算できます。
-          月の勤務日数やシフト日数を確認したい場合に便利です。
-          実際の勤務日数は会社の休日、祝日、有給休暇、シフト条件などによって変わるため、
-          目安としてご利用ください。
-        </p>
-      </section>
+     
 
       <section className="mt-10 max-w-3xl mx-auto text-center">
         <h2 className="text-xl font-bold mb-3">このサイトについて</h2>
