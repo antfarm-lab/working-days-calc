@@ -53,6 +53,56 @@ export default function Home() {
           </p>
         </div>
       </div>
+      <section className="mt-12 text-left max-w-3xl mx-auto space-y-6">
+
+  <div>
+    <h2 className="text-2xl font-bold mb-3">
+      月20日勤務だと給料はいくらになる？
+    </h2>
+    <p>
+      月20日勤務の場合、日給や時給によって月収は大きく変わります。
+      例えば日給1万円なら月収は20万円、
+      時給1200円で1日8時間働く場合は月収約19万2000円になります。
+      働く日数を把握することで収入の見通しを立てやすくなります。
+    </p>
+  </div>
+
+  <div>
+    <h2 className="text-2xl font-bold mb-3">
+      月の労働日数は何日くらいが一般的？
+    </h2>
+    <p>
+      会社員の場合、月の労働日数はおおよそ20日から22日程度になることが多いです。
+      土日祝休みかシフト制かによって勤務日数は変わります。
+      収入を計算するときは、実際に働く日数を確認することが大切です。
+    </p>
+  </div>
+
+  <div>
+    <h2 className="text-2xl font-bold mb-3">
+      週5日勤務と週4日勤務では月収がどれくらい変わる？
+    </h2>
+    <p>
+      週5日勤務なら月20日前後、週4日勤務なら月16日前後の勤務になります。
+      同じ時給や日給でも、働く日数が少なくなると月収も下がります。
+      働き方を変える前に収入差を確認しておくことが重要です。
+    </p>
+  </div>
+
+  <div>
+    <h2 className="text-2xl font-bold mb-3">
+      よくある質問
+    </h2>
+    <p>
+      Q. シフト制の勤務にも使えますか？<br />
+      A. はい。月ごとの勤務日数を入力すれば収入目安を確認できます。<br /><br />
+
+      Q. 週4勤務や短時間勤務にも使えますか？<br />
+      A. はい。働く日数に応じた収入計算に使えます。
+    </p>
+  </div>
+
+</section>
  <section className="mt-10 max-w-3xl mx-auto bg-white p-6 rounded-xl shadow">
         <h2 className="text-xl font-bold mb-3">勤務日数の考え方</h2>
 
