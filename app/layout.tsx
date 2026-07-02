@@ -5,6 +5,10 @@ export const metadata: Metadata = {
   title: "勤務日数計算ツール｜期間日数と休日から勤務日数を自動計算",
   description:
     "期間の日数と休日日数を入力するだけで、勤務日数の目安を簡単に計算できる無料ツールです。",
+    verification: {
+  google: "miCxwdbgRhGe66W37cjiBB0MFNO1tB2WJxh9Dm_zTjc",
+},
+
   keywords: [
     "勤務日数 計算",
     "出勤日数 計算",
