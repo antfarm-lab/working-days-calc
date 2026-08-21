@@ -6,11 +6,23 @@ import { useState } from "react";
 export default function Home() {
   const [totalDays, setTotalDays] = useState("");
   const [holidays, setHolidays] = useState("");
+  const [workDaysPerWeek, setWorkDaysPerWeek] = useState("");
 
   const totalDaysNum = Number(totalDays) || 0;
   const holidaysNum = Number(holidays) || 0;
 
   const workingDays = Math.max(totalDaysNum - holidaysNum, 0);
+  const workDaysPerWeekNum = Number(workDaysPerWeek) || 0;
+
+const monthlyWorkingDays =
+  workDaysPerWeekNum > 0
+    ? (workDaysPerWeekNum * 52) / 12
+    : 0;
+
+const annualWorkingDays =
+  workDaysPerWeekNum > 0
+    ? workDaysPerWeekNum * 52
+    : 0;
 
   return (
     <main className="min-h-screen bg-gray-50 p-8">
@@ -53,6 +65,50 @@ export default function Home() {
           </p>
         </div>
       </div>
+            <div className="max-w-xl mx-auto bg-white p-6 rounded-xl shadow mt-8">
+        <h2 className="text-xl font-bold mb-3 text-center">
+          週の勤務日数から月・年間の勤務日数を計算
+        </h2>
+
+        <p className="text-gray-700 mb-6 text-center">
+          週4日勤務・週5日勤務など、1週間の勤務日数から
+          月平均と年間の勤務日数を計算できます。
+        </p>
+<div className="mb-5 grid grid-cols-3 gap-2">
+  {[3, 4, 5].map((days) => (
+    <button
+      key={days}
+      type="button"
+      onClick={() => setWorkDaysPerWeek(String(days))}
+      className="rounded-lg border bg-gray-50 px-2 py-3 text-sm font-semibold hover:bg-gray-100"
+    >
+      週{days}日
+    </button>
+  ))}
+</div>
+        <div>
+          <label>週の勤務日数（日）</label>
+          <input
+            type="number"
+            min="1"
+            max="7"
+            value={workDaysPerWeek}
+            onChange={(e) => setWorkDaysPerWeek(e.target.value)}
+            className="w-full border p-2 rounded mt-1"
+            placeholder="例：5"
+          />
+        </div>
+
+        <div className="mt-8 space-y-2 border-t pt-6">
+          <p className="font-bold text-green-600 text-xl">
+            月平均の勤務日数: {monthlyWorkingDays.toFixed(1)}日
+          </p>
+
+          <p className="font-bold text-gray-700 text-lg">
+            年間の勤務日数: {annualWorkingDays.toLocaleString()}日
+          </p>
+        </div>
+      </div>
       <section className="mt-12 text-left max-w-3xl mx-auto space-y-6">
 
   <div>
@@ -69,13 +125,25 @@ export default function Home() {
 
   <div>
   <h2 className="text-2xl font-bold mb-3">
-    休日が増えると勤務日数はどう変わる？
+    週4日・週5日勤務は月に何日働く？
   </h2>
+
   <p>
-    同じ30日間でも、休日が8日なら勤務日数は22日、
-    休日が10日なら勤務日数は20日になります。
-    休日日数を変えて入力することで、
-    勤務日数の違いを簡単に比較できます。
+    1年を52週として月平均の勤務日数を計算すると、
+    週4日勤務は月平均約17.3日、
+    週5日勤務は月平均約21.7日が目安になります。
+  </p>
+
+  <p className="mt-3">
+    年間では、週4日勤務なら約208日、
+    週5日勤務なら約260日です。
+    上の計算ツールに週の勤務日数を入力すると、
+    月平均と年間の勤務日数を自動で確認できます。
+  </p>
+
+  <p className="mt-3 text-sm text-gray-600">
+    ※52週を12か月で割った平均値です。
+    祝日・有給休暇・会社休日などは含んでいません。
   </p>
 </div>
 
