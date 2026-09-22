@@ -7,6 +7,7 @@ export default function Home() {
   const [totalDays, setTotalDays] = useState("");
   const [holidays, setHolidays] = useState("");
   const [workDaysPerWeek, setWorkDaysPerWeek] = useState("");
+  const [annualHolidays, setAnnualHolidays] = useState("");
 
   const totalDaysNum = Number(totalDays) || 0;
   const holidaysNum = Number(holidays) || 0;
@@ -22,6 +23,17 @@ const monthlyWorkingDays =
 const annualWorkingDays =
   workDaysPerWeekNum > 0
     ? workDaysPerWeekNum * 52
+    : 0;
+    const annualHolidaysNum = Number(annualHolidays) || 0;
+
+const workingDaysFromAnnualHolidays =
+  annualHolidaysNum > 0
+    ? Math.max(365 - annualHolidaysNum, 0)
+    : 0;
+
+const monthlyWorkingDaysFromAnnualHolidays =
+  workingDaysFromAnnualHolidays > 0
+    ? workingDaysFromAnnualHolidays / 12
     : 0;
 
   return (
@@ -109,12 +121,91 @@ const annualWorkingDays =
           </p>
         </div>
       </div>
+            <div className="max-w-xl mx-auto bg-white p-6 rounded-xl shadow mt-8">
+        <h2 className="text-xl font-bold mb-3 text-center">
+          年間休日から勤務日数を計算
+        </h2>
+
+        <p className="text-gray-700 mb-6 text-center">
+          年間休日の日数から、年間の勤務日数と月平均の勤務日数を計算できます。
+        </p>
+
+        <div className="mb-5 grid grid-cols-3 gap-2">
+          {[105, 120, 125].map((days) => (
+            <button
+              key={days}
+              type="button"
+              onClick={() => setAnnualHolidays(String(days))}
+              className="rounded-lg border bg-gray-50 px-2 py-3 text-sm font-semibold hover:bg-gray-100"
+            >
+              年間休日{days}日
+            </button>
+          ))}
+        </div>
+
+        <div>
+          <label>年間休日（日）</label>
+          <input
+            type="number"
+            min="0"
+            max="365"
+            value={annualHolidays}
+            onChange={(e) => setAnnualHolidays(e.target.value)}
+            className="w-full border p-2 rounded mt-1"
+            placeholder="例：120"
+          />
+        </div>
+
+        <div className="mt-8 space-y-2 border-t pt-6">
+          <p className="font-bold text-green-600 text-xl">
+            年間の勤務日数: {workingDaysFromAnnualHolidays.toLocaleString()}日
+          </p>
+
+          <p className="font-bold text-gray-700 text-lg">
+            月平均の勤務日数:{" "}
+            {monthlyWorkingDaysFromAnnualHolidays.toFixed(1)}日
+          </p>
+        </div>
+
+        <p className="mt-4 text-sm text-gray-600">
+          ※1年を365日として計算した目安です。会社独自の休日や勤務カレンダーなどにより、
+          実際の勤務日数とは異なる場合があります。
+        </p>
+      </div>
       <section className="mt-12 text-left max-w-3xl mx-auto space-y-6">
 
   <div>
   <h2 className="text-2xl font-bold mb-3">
     30日のうち休日が8日なら勤務日数は何日？
   </h2>
+  <div>
+  <h2 className="text-2xl font-bold mb-3">
+    年間休日105日・120日・125日の勤務日数は？
+  </h2>
+
+  <p>
+    1年を365日として計算すると、
+    年間休日105日の場合は年間の勤務日数が260日、
+    年間休日120日の場合は245日、
+    年間休日125日の場合は240日が目安になります。
+  </p>
+
+  <p className="mt-3">
+    月平均では、年間休日105日なら約21.7日、
+    年間休日120日なら約20.4日、
+    年間休日125日なら20.0日の勤務が目安です。
+  </p>
+
+  <p className="mt-3">
+    上の「年間休日から勤務日数を計算」に休日数を入力すると、
+    年間と月平均の勤務日数を自動で確認できます。
+  </p>
+
+  <p className="mt-3 text-sm text-gray-600">
+    ※1年を365日として単純計算した目安です。
+    実際の勤務日数は、会社の勤務カレンダーや休日の設定などによって異なります。
+  </p>
+</div>
   <p>
     例えば30日間のうち休日が8日ある場合、
     勤務日数の目安は22日になります。
@@ -163,9 +254,15 @@ const annualWorkingDays =
     <h2 className="text-2xl font-bold mb-3">
       よくある質問
     </h2>
-    <p>
+   <p>
   Q. シフト制の勤務にも使えますか？<br />
   A. はい。対象期間の日数と休日日数から、勤務日数の目安を確認できます。<br /><br />
+
+  Q. 年間休日120日の勤務日数は何日ですか？<br />
+  A. 1年を365日として計算すると、年間の勤務日数は245日、月平均では約20.4日です。<br /><br />
+
+  Q. 年間休日105日の勤務日数は何日ですか？<br />
+  A. 1年を365日として計算すると、年間の勤務日数は260日、月平均では約21.7日です。<br /><br />
 
   Q. 給料や収入も計算できますか？<br />
   A. いいえ。このツールでは勤務日数のみを計算します。
