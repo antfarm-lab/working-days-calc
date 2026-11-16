@@ -38,6 +38,50 @@ const monthlyWorkingDaysFromAnnualHolidays =
 
   return (
     <main className="min-h-screen bg-gray-50 p-8">
+
+<section className="max-w-xl mx-auto bg-white p-6 rounded-xl shadow mb-8">
+  <h2 className="text-xl font-bold mb-3 text-center">
+    週3日・週4日・週5日勤務は月に何日？
+  </h2>
+
+  <p className="text-gray-700 mb-4 text-sm">
+    1年を52週として計算した、月平均と年間の勤務日数の目安です。
+  </p>
+
+  <div className="overflow-x-auto">
+    <table className="w-full text-sm text-center border-collapse">
+      <thead className="bg-gray-100">
+        <tr>
+          <th className="border p-3">勤務形態</th>
+          <th className="border p-3">月平均</th>
+          <th className="border p-3">年間</th>
+        </tr>
+      </thead>
+      <tbody>
+        {[
+          { days: 3, monthly: "13.0", annual: 156 },
+          { days: 4, monthly: "17.3", annual: 208 },
+          { days: 5, monthly: "21.7", annual: 260 },
+        ].map((item) => (
+          <tr key={item.days}>
+            <td className="border p-3 font-semibold">
+              週{item.days}日
+            </td>
+            <td className="border p-3 text-green-700 font-bold">
+              {item.monthly}日
+            </td>
+            <td className="border p-3">{item.annual}日</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+
+  <p className="mt-4 text-xs text-gray-500">
+    ※祝日・有給休暇・会社独自の休日は含まない概算です。
+  </p>
+</section>
+
       <div className="max-w-xl mx-auto bg-white p-6 rounded-xl shadow">
         <h1 className="text-2xl font-bold mb-3 text-center">
           勤務日数計算ツール
